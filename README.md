@@ -151,3 +151,79 @@ from goal, goal_reached, game
 where game.id = game_id and goal.id = goal_id and screen_name = "Heini"
 );
 <img width="76" alt="Screenshot 2024-09-29 at 13 19 37" src="https://github.com/user-attachments/assets/e7db14b6-87cb-4072-a1bd-138d7e4ca914">
+
+moduuli 7
+
+1. select max(elevation_ft)
+from airport;
+<img width="162" alt="Screenshot 2024-09-29 at 16 14 03" src="https://github.com/user-attachments/assets/56885de6-7cd4-4bc7-8604-f2bca3c75a3a">
+
+2.select continent, count(*)
+from country
+group by continent;
+<img width="164" alt="Screenshot 2024-09-29 at 16 14 57" src="https://github.com/user-attachments/assets/df9a5490-b34c-4283-aba5-31a592d27b13">
+
+3.select screen_name, count(*)
+from game, goal_reached
+where id = game_id
+group by screen_name;
+<img width="185" alt="Screenshot 2024-09-29 at 16 17 33" src="https://github.com/user-attachments/assets/dff41c32-dad8-47be-b2a6-2d18536f30ef">
+
+4.select screen_name
+from game
+where co2_consumed in(
+select min(co2_consumed)
+from game
+);
+<img width="115" alt="Screenshot 2024-09-29 at 16 18 29" src="https://github.com/user-attachments/assets/0d3cbcf3-78f5-4992-a56d-b05da8c74b8e">
+
+5.select country.name, count(*)
+from airport, country
+where airport.iso_country = country.iso_country
+group by country.iso_country
+order by count(*) desc
+limit 50;
+<img width="248" alt="Screenshot 2024-09-29 at 16 20 20" src="https://github.com/user-attachments/assets/b677bae3-6d8a-425f-ab04-6de594c69f34">
+
+6.select country.name
+from airport, country
+where airport.iso_country = country.iso_country
+group by country.iso_country
+having count(*) > 1000;
+<img width="120" alt="Screenshot 2024-09-29 at 16 21 51" src="https://github.com/user-attachments/assets/0d44aa9f-642b-4e62-9338-787f72e4e4c6">
+
+7.select name
+from airport
+where elevation_ft in (
+select max(elevation_ft)
+from airport
+);
+<img width="220" alt="Screenshot 2024-09-29 at 16 36 07" src="https://github.com/user-attachments/assets/d238c853-4630-428e-a5f7-baac565ce36c">
+
+8.select name
+from country
+where iso_country in (
+select iso_country
+from airport
+where elevation_ft in(
+select max(elevation_ft)
+from airport
+)
+);
+<img width="61" alt="Screenshot 2024-09-29 at 16 37 06" src="https://github.com/user-attachments/assets/24b6093a-0dd4-4507-9c96-6883d491053f">
+
+9.select count(*)
+from game, goal_reached
+where id = game_id and screen_name = "Vesa"
+group by screen_name;
+<img width="78" alt="Screenshot 2024-09-29 at 16 38 37" src="https://github.com/user-attachments/assets/52b3be89-3365-4f32-8f63-786def9b9638">
+
+10.select name
+from airport
+where latitude_deg in(
+select min(latitude_deg)
+from airport
+);
+<img width="204" alt="Screenshot 2024-09-29 at 16 39 52" src="https://github.com/user-attachments/assets/a0564c0d-fe5c-4506-94ed-be510f7665e1">
+
+
