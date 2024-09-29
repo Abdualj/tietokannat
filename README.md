@@ -226,4 +226,19 @@ from airport
 );
 <img width="204" alt="Screenshot 2024-09-29 at 16 39 52" src="https://github.com/user-attachments/assets/a0564c0d-fe5c-4506-94ed-be510f7665e1">
 
+moduuli 8
 
+1. update game
+set  location = (select ident from airport where name = "Nottingham Airport"), co2_consumed = co2_consumed+500
+where screen_name = "Vesa";
+
+select * from game; 
+<img width="204" alt="Screenshot 2024-09-29 at 16 39 52" src="https://github.com/user-attachments/assets/60a7827a-4152-4cba-bfa5-020338124655">
+
+3. delete from goal_reached;
+select * from goal_reached
+
+4. delete from game;
+select * from game;
+
+moduuli 9
