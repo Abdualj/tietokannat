@@ -82,5 +82,26 @@ from country, airport, game, goal, goal_reached
 where airport.iso_country = country.iso_country and ident = location and game.id = game_id and goal.id = goal_id and screen_name = "Ilkka" and goal.name = "CLOUDS";
 <img width="139" alt="Screenshot 2024-09-28 at 14 48 58" src="https://github.com/user-attachments/assets/455d97ef-fd32-4c82-8b10-1b0e1e670d68">
 
+moduuli 5
+1. select country.name as "country name", airport.name as "airport name"
+from country inner join airport on airport.iso_country = country.iso_country
+where country.name = "Finland" and scheduled_service = "yes";
+<img width="333" alt="Screenshot 2024-09-29 at 12 44 21" src="https://github.com/user-attachments/assets/7aaa0d38-5cd0-4337-b259-4ac2f962f79d">
+
+2.select screen_name, airport.name
+from game inner join airport on location = ident;
+<img width="300" alt="Screenshot 2024-09-29 at 12 45 35" src="https://github.com/user-attachments/assets/4981b10b-acf3-48b2-8651-e8016c345d1d">
+
+3.select screen_name, country.name
+from game inner join airport on location = ident inner join country on airport.iso_country = country.iso_country;
+<img width="311" alt="Screenshot 2024-09-29 at 12 46 54" src="https://github.com/user-attachments/assets/ae80cac4-32b3-4bdb-9cf7-9eba324f6b96">
+
+4.select airport.name, screen_name
+from airport left join game on ident = location where name like "%Hels%";
+<img width="413" alt="Screenshot 2024-09-29 at 12 48 35" src="https://github.com/user-attachments/assets/2c694a4d-52a4-4b42-834e-70473f1f8117">
+
+5. select name, screen_name
+from goal left join goal_reached on goal.id = goal_id  left join game on game.id = game_id;
+<img width="176" alt="Screenshot 2024-09-29 at 12 49 45" src="https://github.com/user-attachments/assets/d9affd6d-24c1-4c1e-9478-4efe128ec028">
 
 
