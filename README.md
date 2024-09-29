@@ -104,4 +104,50 @@ from airport left join game on ident = location where name like "%Hels%";
 from goal left join goal_reached on goal.id = goal_id  left join game on game.id = game_id;
 <img width="176" alt="Screenshot 2024-09-29 at 12 49 45" src="https://github.com/user-attachments/assets/d9affd6d-24c1-4c1e-9478-4efe128ec028">
 
+moduuli 6
+1. select name
+from country
+where iso_country in(
+select iso_country
+from airport
+where name like "Satsuma%"
+);
+<img width="97" alt="Screenshot 2024-09-29 at 13 14 06" src="https://github.com/user-attachments/assets/f9bdbb55-9569-4e7b-b354-0c3a90422999">
 
+2.select name
+from airport where
+iso_country in(
+select iso_country
+from country
+where name = "Monaco"
+);
+<img width="272" alt="Screenshot 2024-09-29 at 13 15 41" src="https://github.com/user-attachments/assets/ab15aeb1-f01a-489f-90f8-a4f886d98685">
+
+3. select screen_name
+from game
+where id in (
+select game_id
+from goal_reached
+where goal_id in(
+select id
+from goal
+where name = "CLOUDS"
+)
+);
+<img width="118" alt="Screenshot 2024-09-29 at 13 16 34" src="https://github.com/user-attachments/assets/802a58a1-0e8a-4e93-9ddf-38af466fd8de">
+
+4.select country.name
+from country
+where iso_country not in
+(select airport.iso_country
+from airport);
+<img width="243" alt="Screenshot 2024-09-29 at 13 18 34" src="https://github.com/user-attachments/assets/1f0210c6-edac-4e6b-8dc0-c6eab206a70e">
+
+5.select name
+from goal
+where id not in(
+select goal.id
+from goal, goal_reached, game
+where game.id = game_id and goal.id = goal_id and screen_name = "Heini"
+);
+<img width="76" alt="Screenshot 2024-09-29 at 13 19 37" src="https://github.com/user-attachments/assets/e7db14b6-87cb-4072-a1bd-138d7e4ca914">
